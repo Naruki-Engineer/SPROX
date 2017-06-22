@@ -209,8 +209,7 @@ Google Chrome の開発だと Sourcemap がずれます。Google の対応を待
 
 # 今後の課題として、命名規則
 特に画像の命名規則は必須かもしれません。
-<<<<<<< HEAD
-=======
+
 
 # 色々なガイドラインを読んでみる。
 [Google HTML/CSS Styles Guide 日本語訳](http://buchineko.website/google_styleguide_html/)  

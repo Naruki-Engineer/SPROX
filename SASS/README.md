@@ -132,3 +132,91 @@ CSS の クラス指定 の "値" についてかなり考察をしました。
 こちらは柔軟性に飛んでいて、命名規則の柔軟性と シングルクラス マルチクラス の柔軟性を説明している。
 
 具体的には翻訳を読んで欲しい。CSS コーダーの視点だけでなく Javascript や JSON、XML のやり取りにもかなり配慮されていることが理解できると思う。
+
+## 色々なガイドラインを読んでみる。
+[Google HTML/CSS Styles Guide 日本語訳](http://buchineko.website/google_styleguide_html/)  
+いずれは記述ルールとして厳格に遵守するものを作らないといけないかとは思います。
+
+## これだけは守って守って欲しい。
+CSS プロパティの書き方は自由だと思います。  
+プロパティをABC順で書きましょうとかありますが、プロパティ種類でまとめて頂けたらそれでいいと思います。  
+ただ、同類プロパティがバラバラになるのは避けましょう。  
+margin-top と margin-bottom が離れて記述されていたりしたらそれは迷惑ですよね、  
+一応、順番をある程度定義するなら外側のスタイルから記述しましょう。  
+有名な mozilla.org Base Styles を参考
+
+```css
+.foo { /* Suggested order:
+ * display
+ * list-style
+ * position
+ * float
+ * clear
+ * width
+ * height
+ * margin
+ * padding
+ * border
+ * background
+ * color
+ * font
+ * text-decoration
+ * text-align
+ * vertical-align
+ * white-space
+ * other text
+ * content
+ */
+}
+```
+
+ある程度プロパティでまとまりがあって順番が決まっていれば解読性の向上につながると思います。
+
+## インデントはきれいに揃ろ!
+スペース2つ分で決着が付きそうです。インデントは揃えてなおかつ スペース2つ分！
+
+## クラスの"値"は小文字統一 ID や 変数 などは Camel Snake で統一
+これは単に CSS のスタイルと JS などの ID と区別しやすくするため。  
+JS などの場合、スネークケースやキャメルケールでの命名が多く、  
+というか、ルール上、ハイフンが使えないなどの記述制約があるため、そうせざる負えない。  
+また、解読性の向上にもつながる。
+
+class の "値" は小文字統一、Chain ケース で統一する。または BEM を採用する。
+
+```css
+.main-contents /* Chain ケース */
+
+/* Pascal Camel Snake で記述しない。 */
+.MainContents /* Pascal ケース */
+.mainContents /* Camel ケース */
+.main_contents /* Snake ケース */
+```
+
+## 意味不明な略はやめる
+統一された略字なら理解できるが、個別で新しい略字を作らない。
+
+```
+/* NG */
+.contentL ← .contents-left
+.MinCntWrp ← .main-contents-wrap
+
+/* OK */
+.nav ← .navigation
+.info ← .infomation
+.col ← .column
+```
+
+## なるべくクラスは使いまわす
+記述が減ってみんなで使いまわせるものは使い回したほうが効率的。
+
+CSS は基本的にルート表記が望ましい。
+
+```css
+/* NG */
+main > article > section > h1 /* 子孫指定は深すぎないこと */
+.main.content.title_01 /* こんなに限定した値を持たないといけない場合、設計が間違っている */
+
+/* OK */
+section > h1 /* 基本的に使いまわしができそうな指定 */
+.title--foo /* いくつかタイトル装飾に候補があるなら マルチクラスを作成しておく */
+```

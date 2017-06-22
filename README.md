@@ -209,6 +209,8 @@ Google Chrome の開発だと Sourcemap がずれます。Google の対応を待
 
 # 今後の課題として、命名規則
 特に画像の命名規則は必須かもしれません。
+<<<<<<< HEAD
+=======
 
 # 色々なガイドラインを読んでみる。
 [Google HTML/CSS Styles Guide 日本語訳](http://buchineko.website/google_styleguide_html/)  
@@ -297,3 +299,4 @@ main > article > section > h1 /* 子孫指定は深すぎないこと */
 section > h1 /* 基本的に使いまわしができそうな指定 */
 .title--foo /* いくつかタイトル装飾に候補があるなら マルチクラスを作成しておく */
 ```
+>>>>>>> a16101dd34eddd509ff6e266a98d4c8bf4351ca6
